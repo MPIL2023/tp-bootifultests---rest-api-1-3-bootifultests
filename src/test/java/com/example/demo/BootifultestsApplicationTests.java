@@ -37,4 +37,16 @@ class BootifultestsApplicationTests {
 
 	}
 
+	@Test
+	public void addNum() {
+		given()
+				.baseUri("http://localhost:8090")
+				.when()
+				.post("/adder/2")
+				.then()
+				.log().all()
+				.assertThat().statusCode(200);
+
+	}
+
 }

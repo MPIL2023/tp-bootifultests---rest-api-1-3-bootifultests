@@ -18,8 +18,8 @@ public class AdderController {
         return adderService.currentBase();
     }
 
-    @PostMapping
-    public int add(@RequestParam int num) {
+    @PostMapping("{num}")
+    public int add(@PathVariable("num")  int num) {
         return adderService.add(num);
     }
 }
