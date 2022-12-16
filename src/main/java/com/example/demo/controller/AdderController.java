@@ -20,8 +20,13 @@ public class AdderController {
     }
 
 
-    @PostMapping
-    public int add(@RequestParam int num) {
+    @PostMapping()
+    public int add(@RequestBody int num) {
         return adderService.add(num);
+    }
+
+    @PostMapping("/accumulate")
+    public int accumulate(@RequestBody int num) {
+        return adderService.accumulate(num);
     }
 }
