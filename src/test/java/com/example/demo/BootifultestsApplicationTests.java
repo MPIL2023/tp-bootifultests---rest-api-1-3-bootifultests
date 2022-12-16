@@ -5,6 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,14 +23,14 @@ class BootifultestsApplicationTests {
 	@LocalServerPort
 	private int port;
 
-	@Before
-	public void configureRestAssured() {
+	@BeforeEach
+	public void setUp() {
 		RestAssured.baseURI = BASE_URI;
 		RestAssured.port = port;
 	}
 
 	@Test
-	public void TestgetCurrentStatus() {
+	void TestgetCurrentStatus() {
 		given()
 		.baseUri("http://localhost:8090")
 				.when()
@@ -40,7 +41,7 @@ class BootifultestsApplicationTests {
 	}
 
 	@Test
-	public void TestgetCurrentRes() {
+	void TestgetCurrentRes() {
 		Response res = given()
 				.baseUri("http://localhost:8090")
 				.when()
@@ -52,7 +53,7 @@ class BootifultestsApplicationTests {
 
 
 	@Test
-	public void TestaddNumStatus() {
+	void TestaddNumStatus() {
 		given()
 				.baseUri("http://localhost:8090")
 				.queryParam("num","2")
@@ -66,7 +67,7 @@ class BootifultestsApplicationTests {
 
 
 	@Test
-	public void TestaddNumRes() {
+	void TestaddNumRes() {
 		Response res = given()
 				.baseUri("http://localhost:8090")
 				.queryParam("num","2")

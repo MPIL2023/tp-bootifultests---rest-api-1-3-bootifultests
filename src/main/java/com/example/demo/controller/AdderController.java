@@ -19,6 +19,7 @@ public class AdderController {
         return adderService.currentBase();
     }
 
+
     @PostMapping
     public int add(@RequestParam int num) {
         return adderService.add(num);
