@@ -23,13 +23,13 @@ class BootifultestsApplicationTests {
 	private int port;
 
 	@Before
-	public void configureRestAssured() {
+	public void setUp() {
 		RestAssured.baseURI = BASE_URI;
 		RestAssured.port = port;
 	}
 
 	@Test
-	public void TestgetCurrentStatus() {
+	void TestgetCurrentStatus() {
 		given()
 		.baseUri("http://localhost:8090")
 				.when()
@@ -40,7 +40,7 @@ class BootifultestsApplicationTests {
 	}
 
 	@Test
-	public void TestgetCurrentRes() {
+	void TestgetCurrentRes() {
 		Response res = given()
 				.baseUri("http://localhost:8090")
 				.when()
@@ -52,7 +52,7 @@ class BootifultestsApplicationTests {
 
 
 	@Test
-	public void TestaddNumStatus() {
+	void TestaddNumStatus() {
 		given()
 				.baseUri("http://localhost:8090")
 				.queryParam("num","2")
@@ -66,7 +66,7 @@ class BootifultestsApplicationTests {
 
 
 	@Test
-	public void TestaddNumRes() {
+	void TestaddNumRes() {
 		Response res = given()
 				.baseUri("http://localhost:8090")
 				.queryParam("num","2")
