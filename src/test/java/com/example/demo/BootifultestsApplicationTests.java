@@ -2,6 +2,7 @@ package com.example.demo;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static io.restassured.RestAssured.given;
+import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(SpringRunner.class)
@@ -37,14 +39,16 @@ class BootifultestsApplicationTests {
 				.assertThat().statusCode(200);
 	}
 
-	/*@Test
+	@Test
 	public void TestgetCurrentRes() {
-		given()
+		Response res = given()
 				.baseUri("http://localhost:8090")
 				.when()
-				.get("/adder/current")
-				.then().equals(5678);
-	}*/
+				.get("/adder/current");
+
+		assert(res.body().asString().equals("0"));
+
+	}
 
 
 	@Test
@@ -61,13 +65,16 @@ class BootifultestsApplicationTests {
 	}
 
 
-	/*@Test
+	@Test
 	public void TestaddNumRes() {
-		given()
+		Response res = given()
 				.baseUri("http://localhost:8090")
+				.queryParam("num","2")
 				.when()
-				.get("/adder/current")
-				.then().equals(1);
-	}*/
+				.post("/adder");
+
+
+		assert(res.body().asString().equals("2"));
+	}
 
 }
