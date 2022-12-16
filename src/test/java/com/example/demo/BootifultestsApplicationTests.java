@@ -5,6 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +23,7 @@ class BootifultestsApplicationTests {
 	@LocalServerPort
 	private int port;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		RestAssured.baseURI = BASE_URI;
 		RestAssured.port = port;
