@@ -11,6 +11,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -26,7 +27,7 @@ class BootifultestsApplicationTests {
 	}
 
 	@Test
-	public void getCurrent() {
+	public void TestgetCurrentStatus() {
 		given()
 		.baseUri("http://localhost:8090")
 				.when()
@@ -34,19 +35,39 @@ class BootifultestsApplicationTests {
 				.then()
 				.log().all()
 				.assertThat().statusCode(200);
-
 	}
 
-	@Test
-	public void addNum() {
+	/*@Test
+	public void TestgetCurrentRes() {
 		given()
 				.baseUri("http://localhost:8090")
 				.when()
-				.post("/adder/2")
+				.get("/adder/current")
+				.then().equals(5678);
+	}*/
+
+
+	@Test
+	public void TestaddNumStatus() {
+		given()
+				.baseUri("http://localhost:8090")
+				.queryParam("num","2")
+				.when()
+				.post("/adder")
 				.then()
 				.log().all()
 				.assertThat().statusCode(200);
 
 	}
+
+
+	/*@Test
+	public void TestaddNumRes() {
+		given()
+				.baseUri("http://localhost:8090")
+				.when()
+				.get("/adder/current")
+				.then().equals(1);
+	}*/
 
 }
