@@ -41,6 +41,8 @@
 	</dependencies>
 
 	<build>
+		<finalName>my-api-adder</finalName>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
