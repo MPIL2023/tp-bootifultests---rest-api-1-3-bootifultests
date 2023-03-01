@@ -1,6 +1,5 @@
 # Utilise l'image de base openjdk:8-jdk-alpine
-FROM openjdk:8-jdk-alpine
-
+FROM openjdk:17-jdk-alpine3.14
 # Copie le fichier jar de l'application
 COPY target/my-api-adder.jar my-api-adder.jar
 
