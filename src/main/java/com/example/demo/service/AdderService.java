@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdderService {
 
-    private int num;
+    private int num = 0;
 
     public void baseNum(int base) {
         this.num = base;

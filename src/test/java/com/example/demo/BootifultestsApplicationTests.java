@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static io.restassured.RestAssured.given;
@@ -56,7 +57,8 @@ class BootifultestsApplicationTests {
 	void TestaddNumStatus() {
 		given()
 				.baseUri("http://localhost:8090")
-				.queryParam("num","2")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.body(2)
 				.when()
 				.post("/adder")
 				.then()
@@ -70,10 +72,10 @@ class BootifultestsApplicationTests {
 	void TestaddNumRes() {
 		Response res = given()
 				.baseUri("http://localhost:8090")
-				.queryParam("num","2")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.body(2)
 				.when()
 				.post("/adder");
-
 
 		assert(res.body().asString().equals("2"));
 	}
